@@ -6,7 +6,13 @@ The problem should be determined by a corruption of InnoDB that prevent the cont
 If it happens and you have no recent backup you can follow this step to start the container in recovery mode in order to backup your db. 
 First you have to modify **my.cnf** and to do that you can use **docker container cp** 
 
-It works with stopped containers, so stop the container and then
+It works with stopped containers, so stop the container
+if youa re using **docker-compose** simply type: 
+```
+# docker-compose stop
+```
+
+and then
 ```
 docker container cp [container]:/etc/mysql/my.cnf container-my.cnf
 ```
