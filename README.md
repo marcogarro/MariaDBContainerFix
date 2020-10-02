@@ -14,7 +14,7 @@ if youa re using **docker-compose** simply type:
 
 and then
 ```
-docker container cp [container]:/etc/mysql/my.cnf container-my.cnf
+docker container cp container_name:/etc/mysql/my.cnf container-my.cnf
 ```
 
 After this you must edit the **container-my.cnf**
@@ -27,18 +27,18 @@ You can find the [InnoDB recovery Mode](https://mariadb.com/kb/en/innodb-recover
 
 Copy back 
 ```
-docker container cp container-my.cnf [container]:/etc/mysql/my.cnf
+docker container cp container-my.cnf container_name:/etc/mysql/my.cnf
 ```
 
 Dump your db:
 ```
 docker exec -it container_name bash
-#mysqldump -u root -p [databasename] > file.sql
+#mysqldump -u root -p database_name > file.sql
 ```
 
 To restore the db:
 ```
-# mysql -u root -p [databasename] < file.sql
+# mysql -u root -p database_name < file.sql
 ```
 
 My personal advise is: backup your data regularly! :-) 
