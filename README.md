@@ -29,7 +29,7 @@ Copy back
 ```
 docker container cp my.cnf container_name:/etc/mysql/my.cnf
 ```
-Restart the container 
+Start the container in recovery mode
 ```
 # docker-compose start 
 ```
@@ -39,10 +39,13 @@ Dump your DB:
 docker exec -it container_name bash
 # cd /var/lib/mysql
 # mysqldump -u root -p database_name > file.sql
+# exit
+docker-compose down
 ```
+Erase all the mariadb data (except file.sql, of course!). 
 
-To fix the problem you must start a new container with no data, create the DB and restore the data. 
-Copy the dumpfile in your mysql data directory.
+Start a new clean container, create the DB and restore the data. 
+Copy the dumpfile in your mysql data directory and that's it!
 
 ```
 # docker-compose up -d
