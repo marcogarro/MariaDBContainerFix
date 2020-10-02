@@ -37,7 +37,7 @@ Restart the container
 Dump your DB:
 ```
 docker exec -it container_name bash
-# cd /path/to/mysql/data
+# cd /var/lib/mysql
 # mysqldump -u root -p database_name > file.sql
 ```
 
@@ -47,7 +47,7 @@ Copy the dumpfile in your mysql data directory.
 ```
 # docker-compose up -d
 # docker exec -it container_name bash
-# cd /path/to/mysql/data
+# cd /var/lib/mysql
 # mysql -u root -p
 
 MariaDB [none]> CREATE DATABASE mydb;
