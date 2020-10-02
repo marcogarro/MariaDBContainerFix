@@ -34,3 +34,5 @@ To restore the db:
 ```
 # mysql -u root -p [databasename] < file.sql
 ```
+
+My personal advise is: backup your data regularly! :-) 
