@@ -7,14 +7,14 @@ If it happens and you have no recent backup you can follow this step to start th
 First you have to modify **my.cnf** and to do that you can use **docker container cp** 
 
 It works with stopped containers, so stop the container
-if youa re using **docker-compose** simply type: 
+if you are using **docker-compose** simply type: 
 ```
 # docker-compose stop
 ```
 
 and then
 ```
-docker container cp container_name:/etc/mysql/my.cnf container-my.cnf
+docker container cp container_name:/etc/mysql/my.cnf my.cnf
 ```
 
 After this you must edit the **container-my.cnf**
@@ -27,7 +27,7 @@ You can find the [InnoDB recovery Mode](https://mariadb.com/kb/en/innodb-recover
 
 Copy back 
 ```
-docker container cp container-my.cnf container_name:/etc/mysql/my.cnf
+docker container cp my.cnf container_name:/etc/mysql/my.cnf
 ```
 
 Dump your db:
