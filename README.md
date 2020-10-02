@@ -27,7 +27,7 @@ docker container cp container-my.cnf [container]:/etc/mysql/my.cnf
 Dump your db:
 ```
 docker exec -it container_name bash
-#mysqldump -u root -p [database_name] > file.sql
+#mysqldump -u root -p [databasename] > file.sql
 ```
 
 To restore the db:
