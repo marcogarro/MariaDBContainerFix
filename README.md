@@ -1,9 +1,9 @@
 # MariaDB Container Fix
-Fixing MariaDB Container that doens't start
+Fixing MariaDB Docker Container that doens't start
 
-If you are using a MariaDB container you probably got this problem: the container's restarting over and over again. 
-The problem should be determined by a corruption of InnoDB that prevent the container to start and make it unstable. 
-If it happens and you have no recent backup you can follow this step to start the container in recovery mode in order to backup your db. 
+If you are using a MariaDB container with docker you probably, at least once in your life, got this problem: the container's restarting over and over again. 
+The problem should be determined by a corruption of InnoDB that prevent the container to start and that make it unstable. 
+If it happens and you have no recent backups you can follow these steps to start the container in recovery mode in order to backup your data. 
 First you have to modify **my.cnf** and to do that you can use **docker container cp** 
 
 It works with stopped containers, so stop the container
@@ -29,15 +29,30 @@ Copy back
 ```
 docker container cp my.cnf container_name:/etc/mysql/my.cnf
 ```
+Restart the container 
+```
+# docker-compose start 
+```
 
-Dump your db:
+Dump your DB:
 ```
 docker exec -it container_name bash
-#mysqldump -u root -p database_name > file.sql
+# cd /path/to/mysql/data
+# mysqldump -u root -p database_name > file.sql
 ```
 
-To restore the db:
+To fix the problem you must start a new container with no data, create the DB and restore the data. 
+Copy the dumpfile in your mysql data directory.
+
 ```
+# docker-compose up -d
+# docker exec -it container_name bash
+# cd /path/to/mysql/data
+# mysql -u root -p
+
+MariaDB [none]> CREATE DATABASE mydb;
+MariaDB [none]> exit
+
 # mysql -u root -p database_name < file.sql
 ```
 
