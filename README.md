@@ -44,8 +44,9 @@ docker-compose down
 ```
 Erase all the mariadb data (except file.sql, of course!). 
 
-Start a new clean container, create the DB and restore the data. 
-Copy the dumpfile in your mysql data directory and that's it!
+Start a new clean container, create the DB, restore the data and that's it. 
+1. Copy the dumpfile in your mysql data directory;
+2. Restore the data;
 
 ```
 # docker-compose up -d
